@@ -11,7 +11,7 @@ This template will create a High Availability / Disaster Recovery (HADR) solutio
 +	Two Availability Sets; one for the cluster VMs, and the other for the configured client VM
 
 External connections via RDP can be made to all four VMs created by this template.
-The cluster is configured to use a file share witness, which is hosted on the AD Domain Controller.
+The cluster is configured to use a file share witness for quorum. This file share is hosted on the AD Domain Controller.
 
 # Known Issues
 
