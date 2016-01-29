@@ -1,0 +1,7 @@
+{
+  "itemDisplayName": "SIOS DataKeeper with SQL 2014 and Windows Failover Cluster",
+  "description": "Creates four Windows Server 2012R2 nodes connected via a private vNet, and reachable via RDP. Two nodes host the SIOS DataKeeper high-availability / data replication solution as well as an evaluation version of MSSQL 2014. The other two are configured as a primary domain controller and separate client VM.",
+  "summary": "This template porvides a quick and easy way to test the SIOS DataKeeper replication solution in conjunction with Microsoft's Windows Failover Cluster and SQL 2014 products. It can also be used as a foundation for a permanent solution if desired.",
+  "githubUsername": "SIOSDataKeeper",
+  "dateUpdated": "2016-01-29"
+}
