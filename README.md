@@ -1,4 +1,4 @@
-# SIOS DataKeeper / SQL Azure Deployment Template
+# SIOS DataKeeper with SQL 2014<br/>Azure Deployment Template
 
 This template will create a High Availability / Disaster Recovery (HADR) solution featuring the following:
 +	A Virtual Network
