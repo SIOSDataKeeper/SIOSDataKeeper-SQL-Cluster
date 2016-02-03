@@ -1,13 +1,13 @@
-# SIOS DataKeeper with SQL 2014<br/>Azure Deployment Template
+# SQL Server 2015 AlwaysOn Failover Cluster Instance with SIOS DataKeeper<br/>Azure Deployment Template
 
 This template will create a High Availability / Disaster Recovery (HADR) solution featuring the following:
 +	A Virtual Network
 +	Three data storage accounts and one dedicated diagnostic storage account
 +	Four public IP addresses and associated NICs for remote connections to all four VMs via RDP
-+	One internal load balancer configured to allow replication traffic across the domain
-+	One VM configured as a Domain Controller for a new forest with a single domain
-+	Two Vms in a Windows Server Failover Cluster, both running SQL 2014 and SIOS DataKeeper
-+	One VM configured as a client outside of the cluster
++	One internal load balancer for client connectivity to clustered instance of SQL Server
++	One Windows Server 2012 R2 VM configured as a Domain Controller for a new forest with a single domain
++	Two Windows Server 2012 R2 VMs in a Windows Server Failover Cluster, both running SQL Server 2014 and SIOS DataKeeper
++	One Windows Server 2012 R2 VM configured as a client outside of the cluster
 +	Two Availability Sets; one for the cluster VMs, and the other for the configured client VM
 
 External connections via RDP can be made to all four VMs created by this template.
