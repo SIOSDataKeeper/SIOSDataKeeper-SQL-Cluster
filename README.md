@@ -19,7 +19,7 @@ This template is mostly deployed in a serial manner, and utilizes PowerShell DSC
 
 ## Notes
 
-+	The default settings for storage are to deploy using **premium storage**, all four VMs use a P10 Disk for the OS. The domain controller and two cluster nodes are also configured with an additional P10 disk for data and diagnostics. These sizes can be changed by changing the relevant variables.
++	The default settings for storage are to deploy using **premium storage**. All four VMs use a P10 Disk for the OS. The domain controller and two cluster nodes are also configured with an additional P10 disk for data and diagnostics. These sizes can be changed by changing the relevant variables.
 
 + 	By default, these settings require that you have at least 4 cores of available quota to deploy.
 
