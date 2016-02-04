@@ -23,9 +23,9 @@ This template is mostly deployed in a serial manner, and uses PowerShell DSC Ext
 
 + 	By default, these settings require that you have at least 4 cores of available quota to deploy.
 
-+ 	The images used to create this deployment are
++ 	The images used to create this deployment are:
 	+ 	AD VM - Latest Windows Server 2012 R2 Image
-	+ 	SIOS DataKeeeper / SQL Server VMs - DataKeeper 8.3.0 marketplace image (requires license), which is based on the latest Windows Server 2012 R2 Image,  with SQL 2014 SP1 evaluation version 
+	+ 	SIOS DataKeeper / SQL Server VMs - DataKeeper 8.3.0 marketplace image (requires license), which is based on the latest Windows Server 2012 R2 Image,  with SQL 2014 SP1 evaluation version 
 	+ 	Client - Latest Windows Server 2012 R2 Image  
 	
 # Click the button below to deploy a<br/>SIOS DataKeeper / SQL 2014 Failover Cluster in the Azure Portal
@@ -66,10 +66,10 @@ New-AzureRmResourceGroupDeployment -Name <Deployment Name> -ResourceGroupName <r
 
 ```
 
-You will be prompted for the following parameters
+You will be prompted for the following parameters:
 
-+ **licenseKeyFtpURL:** - Enter the path to your temporary license file. This path appears in the email that you received from SIOS Technology Corp. when you requested an evaluation key. Provide the folder name which contains the license in this field.<br/>Example input - http://ftp.us.sios.com/pickup/EVAL_Some_User_2016-01-26_DKCE. To request a free 14 day trial, visit http://us.sios.com/clustersyourway/cta/14-day-trial.
-+ **newStorageAccountNamePrefix:** - The prefix of the new storage account created to store the VMs disks, different storage accounts will be created for AD and DataKeeper VMs. This value must be composed of all lowercase letters or numbers and be a maximum of 20 characters long and globally unique within all of Azure.
++ **licenseKeyFtpURL:** - Enter the path to your temporary license file. This path appears in the email that you received from SIOS Technology Corp. containing your evaluation key. Provide the folder name which contains the license in this field.<br/>Example input - http://ftp.us.sios.com/pickup/EVAL_Some_User_2016-01-26_DKCE. To request a free 14 day trial, visit http://us.sios.com/clustersyourway/cta/14-day-trial.
++ **newStorageAccountNamePrefix:** - The prefix of the new storage account created to store the VMs disks. Different storage accounts will be created for AD and DataKeeper VMs. This value must be composed of all lowercase letters or numbers, be a maximum of 20 characters long, and be globally unique within all of Azure.
 + **storageAccountType:** - Type of storage account to create. This must be set to Premium if DS size VMs are being created.
 + **domainName:** The domain name in FQDN form. This value should contain at least two parts, separated by a '.' (for example, datakeeper.local). The first part of the FQDN will be used as the login domain name (for example, login as datakeeper&#92;siosadmin), and must not match the domainAdminUsername. If domainName does not contain a '.', the suffix '.local' will be appended.
 + **domainAdminUsername:** The username for the Administrator of the new VMs and Domain. The domainAdminUsername chosen must not match the domain specified in the domainName parameter (for example: using domainName 'datakeeper.local' and domainAdminUsername 'datakeeper' will cause the deployment to fail).
