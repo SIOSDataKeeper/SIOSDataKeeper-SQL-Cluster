@@ -1,4 +1,4 @@
-# SQL Server 2015 AlwaysOn Failover Cluster Instance with SIOS DataKeeper<br/>Azure Deployment Template
+# SQL Server 2014 AlwaysOn Failover Cluster Instance with SIOS DataKeeper<br/>Azure Deployment Template
 
 This template will create a High Availability / Disaster Recovery (HADR) solution featuring the following:
 +	A Virtual Network
