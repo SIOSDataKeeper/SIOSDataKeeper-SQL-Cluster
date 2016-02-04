@@ -15,7 +15,7 @@ The cluster is configured to use a file share witness for quorum. This file shar
 
 # Known Issues
 
-This template is mostly deployed in a serial manner, and uses PowerShell DSC Extensions for final configurations. As a result, and because of current restrictions in the Azure back-end logic, deployment of this template requiring 45-60 min to complete. Microsoft is working toward a solution that allows more parallel operations (enabling faster deployment times). This template will be updated accordingly as soon as possible.
+This template is mostly deployed in a serial manner, and uses PowerShell DSC Extensions for final configurations. As a result, and because of current restrictions in the Azure back-end logic, deployment of this template requires 45-60 min to complete. Microsoft is working toward a solution that allows more parallel operations (enabling faster deployment times). This template will be updated accordingly as soon as possible.
 
 ## Notes
 
@@ -68,7 +68,7 @@ New-AzureRmResourceGroupDeployment -Name <Deployment Name> -ResourceGroupName <r
 
 You will be prompted for the following parameters:
 
-+ **licenseKeyFtpURL:** - Enter the path to your temporary license file. This path appears in the email that you received from SIOS Technology Corp. containing your evaluation key. Provide the folder name which contains the license in this field.<br/>Example input - http://ftp.us.sios.com/pickup/EVAL_Some_User_2016-01-26_DKCE. To request a free 14 day trial, visit http://us.sios.com/clustersyourway/cta/14-day-trial.
++ **licenseKeyFtpURL:** - Enter the path to your temporary license file. This path appears in the email that you received from SIOS Technology Corp. that contained your evaluation key. Provide the folder name which contains the license in this field.<br/>Example input - http://ftp.us.sios.com/pickup/EVAL_Some_User_2016-01-26_DKCE. To request a free 14 day trial, visit http://us.sios.com/clustersyourway/cta/14-day-trial.
 + **newStorageAccountNamePrefix:** - The prefix of the new storage account created to store the VMs disks. Different storage accounts will be created for AD and DataKeeper VMs. This value must be composed of all lowercase letters or numbers, be a maximum of 20 characters long, and be globally unique within all of Azure.
 + **storageAccountType:** - Type of storage account to create. This must be set to Premium if DS size VMs are being created.
 + **domainName:** The domain name in FQDN form. This value should contain at least two parts, separated by a '.' (for example, datakeeper.local). The first part of the FQDN will be used as the login domain name (for example, login as datakeeper&#92;siosadmin), and must not match the domainAdminUsername. If domainName does not contain a '.', the suffix '.local' will be appended.
