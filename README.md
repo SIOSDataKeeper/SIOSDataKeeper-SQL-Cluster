@@ -1,6 +1,6 @@
 # SQL Server 2014 AlwaysOn Failover Cluster Instance with SIOS DataKeeper<br/>Azure Deployment Template
 
-This template will create a High Availability / Disaster Recovery (HADR) solution featuring the following:
+This template will create a high availability/disaster recovery (HA/DR) solution with the following features:
 +	A Virtual Network
 +	Three data storage accounts and one dedicated diagnostic storage account
 +	Four public IP addresses and associated NICs for remote connections to all four VMs via RDP
@@ -15,7 +15,7 @@ The cluster is configured to use a file share witness for quorum. This file shar
 
 # Known Issues
 
-This template is mostly deployed in a serial manner, and utilizes PowerShell DSC Extensions for final configurations. Due to this and current restrictions in the Azure backend logic, this results in the template requiring 45 min to an hour to complete deployment. Microsoft is working toward a solution allowing more parallel operations (and thus faster deployment times). This template will be updated accordingly as soon as possible.
+This template is mostly deployed in a serial manner, and uses PowerShell DSC Extensions for final configurations. As a result, and because of current restrictions in the Azure back-end logic, deployment of this template requiring 45-60 min to complete. Microsoft is working toward a solution that allows more parallel operations (enabling faster deployment times). This template will be updated accordingly as soon as possible.
 
 ## Notes
 
