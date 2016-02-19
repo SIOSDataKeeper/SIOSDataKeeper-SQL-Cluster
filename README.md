@@ -6,7 +6,7 @@ This template will create a high availability/disaster recovery (HA/DR) solution
 +	Four public IP addresses and associated NICs for remote connections to all four VMs via RDP
 +	One internal load balancer for client connectivity to clustered instance of SQL Server
 +	One Windows Server 2012 R2 VM configured as a Domain Controller for a new forest with a single domain
-+	Two Windows Server 2012 R2 VMs in a Windows Server Failover Cluster, both running SQL Server 2014 and SIOS DataKeeper
++	Two Windows Server 2012 R2 VMs in a Windows Server Failover Cluster, both running an SQL Server 2014 (evaluation license) and SIOS DataKeeper
 +	One Windows Server 2012 R2 VM configured as a client outside of the cluster
 +	Two Availability Sets; one for the cluster VMs, and the other for the configured client VM
 
