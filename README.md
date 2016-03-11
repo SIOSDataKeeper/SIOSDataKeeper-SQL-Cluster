@@ -6,7 +6,7 @@ This template will create a high availability/disaster recovery (HA/DR) solution
 +	Four public IP addresses and associated NICs for remote connections to all four VMs via RDP
 +	One internal load balancer for client connectivity to clustered instance of SQL Server
 +	One Windows Server 2012 R2 VM configured as a Domain Controller for a new forest with a single domain
-+	Two Windows Server 2012 R2 VMs in a Windows Server Failover Cluster, both running SQL Server 2014 and SIOS DataKeeper
++	Two Windows Server 2012 R2 VMs in a Windows Server Failover Cluster, both running an SQL Server 2014 (180 day evaluation license) and SIOS DataKeeper
 +	One Windows Server 2012 R2 VM configured as a client outside of the cluster
 +	Two Availability Sets; one for the cluster VMs, and the other for the configured client VM
 
@@ -25,7 +25,7 @@ This template is mostly deployed in a serial manner, and uses PowerShell DSC Ext
 
 + 	The images used to create this deployment are:
 	+ 	AD VM - Latest Windows Server 2012 R2 Image
-	+ 	SIOS DataKeeper / SQL Server VMs - DataKeeper 8.3.0 marketplace image (requires license), which is based on the latest Windows Server 2012 R2 Image,  with SQL 2014 SP1 evaluation version 
+	+ 	SIOS DataKeeper / SQL Server VMs - DataKeeper 8.3.0 marketplace image (requires license), which is based on the latest Windows Server 2012 R2 Image,  with SQL 2014 SP1 180 day evaluation version 
 	+ 	Client - Latest Windows Server 2012 R2 Image  
 	
 # Click the button below to deploy a<br/>SIOS DataKeeper / SQL 2014 Failover Cluster in the Azure Portal
