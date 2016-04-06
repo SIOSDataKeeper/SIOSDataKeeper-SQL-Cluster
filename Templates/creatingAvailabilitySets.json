@@ -5,6 +5,9 @@
     "location": {
       "type": "string"
     },
+    "adAvailabilitySetName": {
+      "type": "string"
+    },
     "siosAvailabilitySetName": {
       "type": "string"
     },
@@ -13,6 +16,16 @@
     }
   },
   "resources": [
+    {
+      "type": "Microsoft.Compute/availabilitySets",
+      "name": "[parameters('adAvailabilitySetName')]",
+      "apiVersion": "2015-06-15",
+      "location": "[parameters('location')]",
+      "properties": {
+        "platformFaultDomainCount": 3,
+        "platformUpdateDomainCount": 3
+      }
+    },
     {
       "type": "Microsoft.Compute/availabilitySets",
       "name": "[parameters('siosAvailabilitySetName')]",
@@ -35,6 +48,10 @@
     }
   ],
   "outputs": {
+    "adAvailabilitySet": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Compute/availabilitySets',parameters('adAvailabilitySetName'))]"
+    },
     "siosAvailabilitySet": {
       "type": "string",
       "value": "[resourceId('Microsoft.Compute/availabilitySets',parameters('siosAvailabilitySetName'))]"

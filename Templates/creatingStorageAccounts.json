@@ -8,22 +8,30 @@
     "location" : {
       "type" : "string"
     },
-    "storageAccountType" : {
+    "adStorageAccountType" : {
+      "type" : "string"
+    }
+    "siosStorageAccountType" : {
       "type" : "string"
     }
   },
   "resources": [
   {
     "type": "Microsoft.Storage/storageAccounts",
-    "name": "[concat(parameters('newStorageAccountNamePrefix'), copyindex())]",
+    "name": "[concat(parameters('newStorageAccountNamePrefix'), 'adir')]",
     "apiVersion": "2015-06-15",
     "location": "[parameters('location')]",
-    "copy": {
-      "name": "storageAccountLoop",
-      "count": 2
-    },
     "properties": {
-    "accountType": "[parameters('storageAccountType')]"
+    "accountType": "[parameters('adStorageAccountType')]"
+    }
+  },
+  {
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[concat(parameters('newStorageAccountNamePrefix'), 'sios')]",
+    "apiVersion": "2015-06-15",
+    "location": "[parameters('location')]",
+    "properties": {
+    "accountType": "[parameters('siosStorageAccountType')]"
     }
   },
   {
