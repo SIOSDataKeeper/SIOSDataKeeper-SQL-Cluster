@@ -74,7 +74,11 @@
         "Standard_D13",
         "Standard_DS13",
         "Standard_D14",
-        "Standard_DS14"
+        "Standard_DS14",
+		"Standard_GS1",
+		"Standard_GS2",
+		"Standard_GS3",
+		"Standard_GS4"
       ],
       "metadata": {
         "description": "The size of the primary domain controller VM. If a DS size is selected, the STORAGEACCOUNTTYPE parameter must have a Premium type selected."
@@ -99,7 +103,11 @@
         "Standard_D13",
         "Standard_DS13",
         "Standard_D14",
-        "Standard_DS14"
+        "Standard_DS14",
+		"Standard_GS1",
+		"Standard_GS2",
+		"Standard_GS3",
+		"Standard_GS4"
       ],
       "metadata": {
         "description": "The size of the DataKeeper / SQL VMs. If a DS size is selected, the STORAGEACCOUNTTYPE parameter must have a Premium type selected."
