@@ -10,7 +10,7 @@
     },
     "adStorageAccountType" : {
       "type" : "string"
-    }
+    },
     "siosStorageAccountType" : {
       "type" : "string"
     }
