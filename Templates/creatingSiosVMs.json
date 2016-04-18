@@ -277,7 +277,7 @@
       },
       "properties": {
         "hardwareProfile": {
-          "vmSize": "[parameters('siosVMSize')]"
+          "vmSize": "[parameters('clientVMSize')]"
         },
         "availabilitySet": {
           "id": "[parameters('clientAvailabilitySet')]"
