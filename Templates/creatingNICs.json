@@ -102,7 +102,7 @@
               "privateIPAllocationMethod": "Static",
               "privateIPAddress": "[concat('10.0.0.',add(copyIndex(),6))]",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat(parameters('siosVMRdpIPAddressNamePrefix'), concat(add(copyIndex(),1),'RdpIP'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat(parameters('siosVMRdpIPAddressNamePrefix'), concat(add(copyIndex(),1),'RdpIP')))]"
               },
               "subnet": {
                 "id": "[parameters('staticSubnetRef')]"
