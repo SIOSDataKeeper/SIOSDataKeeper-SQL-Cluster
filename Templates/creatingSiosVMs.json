@@ -246,6 +246,10 @@
       "name": "[concat(variables('siosVMNamePrefix'), add(copyIndex(),1), '/configureSiosVM')]",
       "apiVersion": "2015-06-15",
       "location": "[parameters('location')]",
+	  "copy": {
+        "name": "siosVirtualMachineLoop",
+        "count": "[parameters('computeNodeCount')]"
+      },
       "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('siosVMNamePrefix'), add(copyIndex(),1))]"
       ],
