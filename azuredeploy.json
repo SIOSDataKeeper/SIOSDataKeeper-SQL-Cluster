@@ -252,7 +252,10 @@
           },
           "siosVMRdpIPAddressNamePrefix": {
             "value": "[variables('siosVMRdpIPAddressNamePrefix')]"
-          }
+          },
+		  "computeNodeCount": {
+			"value": "[parameters('computeNodeCount')]"
+		  }
         }
       }
     },
@@ -395,7 +398,10 @@
           },
           "ilbBEAddressPoolID": {
             "value": "[variables('ilbBEAddressPoolID')]"
-          }
+          },
+		  "computeNodeCount": {
+			"value": "[parameters('computeNodeCount')]"
+		  }
         }
       }
     },
