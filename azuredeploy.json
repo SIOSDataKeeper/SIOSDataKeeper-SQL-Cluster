@@ -135,7 +135,6 @@
   },
   "variables": {
     "location": "[resourceGroup().location]",
-	"computeNodeCount": "[sub(parameters('computeNodeCount'),1)]",
     "pdcRdpIPAddressName": "pdcRdpIP",
     "siosVMRdpIPAddressNamePrefix": "sios",
     "virtualNetworkAddressRange": "10.0.0.0/16",
@@ -255,7 +254,7 @@
             "value": "[variables('siosVMRdpIPAddressNamePrefix')]"
           },
 		  "computeNodeCount": {
-			"value": "[variables('computeNodeCount')]"
+			"value": "[parameters('computeNodeCount')]"
 		  }
         }
       }
@@ -401,7 +400,7 @@
             "value": "[variables('ilbBEAddressPoolID')]"
           },
 		  "computeNodeCount": {
-			"value": "[variables('computeNodeCount')]"
+			"value": "[parameters('computeNodeCount')]"
 		  }
         }
       }
@@ -541,7 +540,7 @@
             "value": "[reference('CreatingAvailabilitySets').outputs.clientAvailabilitySet.value]"
           },
 		  "computeNodeCount": {
-			"value": "[variables('computeNodeCount')]"  
+			"value": "[parameters('computeNodeCount')]"  
 		  },
           "siosVMSize": {
             "value": "[parameters('sQLVMSize')]"
