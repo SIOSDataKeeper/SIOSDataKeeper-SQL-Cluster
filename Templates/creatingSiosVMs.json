@@ -20,9 +20,6 @@
     "siosVMSize": {
       "type": "string"
     },
-	"clientVMSize": {
-      "type": "string"
-    },
     "domainName": {
       "type": "string"
     },
