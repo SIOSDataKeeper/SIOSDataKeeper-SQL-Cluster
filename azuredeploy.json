@@ -266,7 +266,7 @@
           },
           "adAvailabilitySetName": {
             "value": "[variables('vmSettings').availabilitySets.adAvailabilitySetName]"
-          },
+          },,
           "siosAvailabilitySetName": {
             "value": "[variables('vmSettings').availabilitySets.siosAvailabilitySetName]"
           },
