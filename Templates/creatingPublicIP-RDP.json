@@ -10,7 +10,10 @@
     },
     "siosVMRdpIPAddressNamePrefix": {
       "type": "string"
-    }
+    },
+	"computeNodeCount": {
+		"type": "int"
+	}
   },
   "resources": [
     {
@@ -34,8 +37,12 @@
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/publicIPAddresses",
-      "name": "[concat(parameters('siosVMRdpIPAddressNamePrefix'), '1RdpIP')]",
+      "name": "[concat(parameters('siosVMRdpIPAddressNamePrefix'), concat(add(copyIndex(),1),'RdpIP'))]",
       "location": "[parameters('location')]",
+	  "copy": {
+        "name": "rdpLoop",
+        "count": "[parameters('computeNodeCount')]"
+      },
       "properties": {
         "publicIPAllocationMethod": "dynamic"
       }
