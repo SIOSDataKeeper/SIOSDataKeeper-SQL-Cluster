@@ -25,10 +25,7 @@
     },
     "ilbBEAddressPoolID": {
       "type": "string"
-    },
-	"computeNodeCount": {
-	  "type": "int"
-	}
+    }
   },
   "variables": {
     "siosVMNamePrefix": "[concat(parameters('siosVMNamePrefix'), '-')]"
@@ -86,13 +83,9 @@
       }
     },
     {
-      "name": "[concat(variables('siosVMNamePrefix'), concat(add(copyIndex(),1),'-nic'))]",
+      "name": "[concat(variables('siosVMNamePrefix'), '1-nic')]",
       "type": "Microsoft.Network/networkInterfaces",
       "location": "[parameters('location')]",
-	  "copy": {
-        "name": "nicLoop",
-        "count": "[parameters('computeNodeCount')]"
-      },
       "apiVersion": "2015-06-15",
       "properties": {
         "ipConfigurations": [
@@ -100,9 +93,9 @@
             "name": "ipconfig1",
             "properties": {
               "privateIPAllocationMethod": "Static",
-              "privateIPAddress": "[concat('10.0.0.',add(copyIndex(),6))]",
+              "privateIPAddress": "10.0.0.6",
               "publicIPAddress": {
-                "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat(parameters('siosVMRdpIPAddressNamePrefix'), concat(add(copyIndex(),1),'RdpIP'))]"
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat(parameters('siosVMRdpIPAddressNamePrefix'), '1RdpIP'))]"
               },
               "subnet": {
                 "id": "[parameters('staticSubnetRef')]"
