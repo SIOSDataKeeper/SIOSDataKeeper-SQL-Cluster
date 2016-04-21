@@ -68,7 +68,7 @@
             "name": "ipconfig1",
             "properties": {
               "privateIPAllocationMethod": "Static",
-              "privateIPAddress": "10.0.0.6",
+              "privateIPAddress": "10.0.0.5",
               "publicIPAddress": {
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat(parameters('siosVMRdpIPAddressNamePrefix'), '0RdpIP'))]"
               },
@@ -100,7 +100,7 @@
             "name": "ipconfig1",
             "properties": {
               "privateIPAllocationMethod": "Static",
-              "privateIPAddress": "[concat('10.0.0.',add(copyIndex(),7))]",
+              "privateIPAddress": "[concat('10.0.0.',add(copyIndex(),6))]",
               "publicIPAddress": {
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat(parameters('siosVMRdpIPAddressNamePrefix'), concat(add(copyIndex(),1),'RdpIP')))]"
               },
@@ -128,7 +128,7 @@
             "name": "ipconfig1",
             "properties": {
               "privateIPAllocationMethod": "Static",
-              "privateIPAddress": "10.0.0.5",
+              "privateIPAddress": "10.0.0.7",
               "publicIPAddress": {
                 "id": "[resourceId('Microsoft.Network/publicIPAddresses',concat(parameters('siosVMRdpIPAddressNamePrefix'), 'clientRdpIP'))]"
               },
