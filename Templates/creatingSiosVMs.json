@@ -17,9 +17,6 @@
     "clientAvailabilitySet": {
       "type": "string"
     },
-	"computeNodeCount": {
-		"type": "int"
-	},
     "siosVMSize": {
       "type": "string"
     },
@@ -161,8 +158,7 @@
             "licenseKeyFtpURL": "[parameters('licenseKeyFtpURL')]",
             "clusterName": "[parameters('clusterName')]",
             "sharePath": "[toLower(concat(variables('sharePathPrefix'), parameters('sharePath')))]",
-            "nodeNamePrefix": "[variables('siosVMNamePrefix')]",
-			"nodeCount": "[variables('computeNodeCount')]"
+            "nodes": [ "[concat(variables('siosVMNamePrefix'),'0')]", "[concat(variables('siosVMNamePrefix'),'1')]" ]
           }
         },
         "protectedSettings": {
@@ -175,7 +171,7 @@
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[concat(variables('siosVMNamePrefix'), add(copyIndex(),1))]",
+      "name": "[concat(variables('siosVMNamePrefix'), '1')]",
       "location": "[parameters('location')]",
       "plan": {
         "name": "bring_your_own_license_dkce_and_sql",
@@ -190,7 +186,7 @@
           "id": "[parameters('siosAvailabilitySet')]"
         },
         "osProfile": {
-          "computerName": "[concat(variables('siosVMNamePrefix'), add(copyIndex(),1))]",
+          "computerName": "[concat(variables('siosVMNamePrefix'), '1')]",
           "adminUsername": "[parameters('adminUsername')]",
           "adminPassword": "[parameters('adminPassword')]"
         },
@@ -204,7 +200,7 @@
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'sios.blob.core.windows.net/',parameters('vmContainerName'),'/',variables('siosVMNamePrefix'), add(copyIndex(),1), '-osdisk.vhd')]"
+              "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'sios.blob.core.windows.net/',parameters('vmContainerName'),'/',variables('siosVMNamePrefix'), '1', '-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -212,9 +208,9 @@
           "dataDisks": [
             {
               "vhd": {
-                "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'sios.blob.core.windows.net/',parameters('vmContainerName'),'/', variables('siosVMNamePrefix'), add(copyIndex(),1), '-datadisk.vhd')]"
+                "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'sios.blob.core.windows.net/',parameters('vmContainerName'),'/', variables('siosVMNamePrefix'), '1', '-datadisk.vhd')]"
               },
-              "name": "[concat(variables('siosVMNamePrefix'), add(copyIndex(),1),'-datadisk')]",
+              "name": "[concat(variables('siosVMNamePrefix'), '1','-datadisk')]",
               "caching": "None",
               "createOption": "empty",
               "diskSizeGB": 100,
@@ -225,7 +221,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId(resourceGroup().name,'Microsoft.Network/networkInterfaces',concat(variables('siosVMNamePrefix'), add(copyIndex(),1),'-nic'))]"
+              "id": "[resourceId(resourceGroup().name,'Microsoft.Network/networkInterfaces',concat(variables('siosVMNamePrefix'), '1','-nic'))]"
             }
           ]
         },
@@ -239,11 +235,11 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(variables('siosVMNamePrefix'), add(copyIndex(),1), '/configureSiosVM')]",
+      "name": "[concat(variables('siosVMNamePrefix'), '1', '/configureSiosVM')]",
       "apiVersion": "2015-06-15",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', variables('siosVMNamePrefix'), add(copyIndex(),1))]"
+        "[concat('Microsoft.Compute/virtualMachines/', variables('siosVMNamePrefix'), '1')]"
       ],
       "properties": {
         "publisher": "Microsoft.Powershell",

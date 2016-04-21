@@ -125,13 +125,7 @@
       "metadata": {
         "description": "The prefix of the new storage account created to store the VMs disks, different storage accounts will be created for AD and DataKeeper VMs. This value must be composed of all lowercase letters or numbers and be a maximum of 20 characters long and globally unique within all of Azure."
       }
-    },
-	"computeNodeCount": {
-		"type": "int",
-		"metadata": {
-			"description": "The number of cluster nodes to create."
-		}
-	}
+    }
   },
   "variables": {
     "location": "[resourceGroup().location]",
@@ -533,9 +527,6 @@
           "clientAvailabilitySet": {
             "value": "[reference('CreatingAvailabilitySets').outputs.clientAvailabilitySet.value]"
           },
-		  "computeNodeCount": {
-			"value": "[parameters('computeNodeCount')]"  
-		  },
           "siosVMSize": {
             "value": "[parameters('sQLVMSize')]"
           },
