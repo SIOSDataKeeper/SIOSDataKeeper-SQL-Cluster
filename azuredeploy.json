@@ -24,7 +24,7 @@
         "Premium_LRS"
       ],
       "metadata": {
-        "description": "Type of storage account to create. This must be set to Premium if DS or GS size VMs are being created."
+        "description": "Type of storage account to create. This must be set to Premium if DS size VMs are being created."
       }
     },
     "domainName": {
@@ -81,20 +81,7 @@
 		"Standard_GS4"
       ],
       "metadata": {
-        "description": "The size of the primary domain controller VM. If a DS or GS size is selected, the ADSTORAGEACCOUNTTYPE parameter must have a Premium type selected."
-      }
-    },
-    "adStorageAccountType": {
-      "type": "string",
-      "defaultValue": "Premium_LRS",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_GRS",
-        "Standard_RAGRS",
-        "Premium_LRS"
-      ],
-      "metadata": {
-        "description": "Type of storage account to create. This must be set to Premium if DS or GS size VMs are being created."
+        "description": "The size of the primary domain controller VM. If a DS size is selected, the STORAGEACCOUNTTYPE parameter must have a Premium type selected."
       }
     },
     "sQLVMSize": {
@@ -123,7 +110,7 @@
 		"Standard_GS4"
       ],
       "metadata": {
-        "description": "The size of the DataKeeper / SQL VMs. If a DS size is selected, the SIOSSTORAGEACCOUNTTYPE parameter must have a Premium type selected."
+        "description": "The size of the DataKeeper / SQL VMs. If a DS size is selected, the STORAGEACCOUNTTYPE parameter must have a Premium type selected."
       }
     }
   },
@@ -149,7 +136,6 @@
     "ilbBEAddressPoolID": "[concat(variables('ilbID'),'/backendAddressPools/',variables('ilbBE'))]",
     "vmSettings": {
       "availabilitySets": {
-		  "adAvailabilitySetName": "adAvailabilitySet",
         "siosAvailabilitySetName": "siosAvailabilitySet",
         "clientAvailabilitySetName": "clientAvailabilitySet"
       },
@@ -218,10 +204,7 @@
           "newStorageAccountNamePrefix": {
             "value": "[parameters('newStorageAccountNamePrefix')]"
           },
-          "adStorageAccountType": {
-            "value": "[parameters('adStorageAccountType')]"
-          },
-          "siosStorageAccountType": {
+          "storageAccountType": {
             "value": "[parameters('storageAccountType')]"
           }
         }
@@ -264,9 +247,6 @@
           "location": {
             "value": "[variables('location')]"
           },
-          "adAvailabilitySetName": {
-            "value": "[variables('vmSettings').availabilitySets.adAvailabilitySetName]"
-          },,
           "siosAvailabilitySetName": {
             "value": "[variables('vmSettings').availabilitySets.siosAvailabilitySetName]"
           },
@@ -420,7 +400,7 @@
             "value": "[parameters('newStorageAccountNamePrefix')]"
           },
           "availabilitySet": {
-            "value": "[reference('CreatingAvailabilitySets').outputs.adAvailabilitySet.value]"
+            "value": "[reference('CreatingAvailabilitySets').outputs.siosAvailabilitySet.value]"
           },
           "adVMSize": {
             "value": "[parameters('adVMSize')]"

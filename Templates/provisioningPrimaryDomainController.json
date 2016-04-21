@@ -79,7 +79,7 @@
         "osDisk": {
           "name": "osdisk",
           "vhd": {
-            "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'adir.blob.core.windows.net/',parameters('vmContainerName'),'/',parameters('adPDCVMName'),'-osdisk.vhd')]"
+            "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'0.blob.core.windows.net/',parameters('vmContainerName'),'/',parameters('adPDCVMName'),'-osdisk.vhd')]"
           },
           "caching": "ReadWrite",
           "createOption": "FromImage"
@@ -87,7 +87,7 @@
         "dataDisks": [
           {
             "vhd": {
-              "uri":"[concat('http://',parameters('newStorageAccountNamePrefix'),'adir.blob.core.windows.net/',parameters('vmContainerName'),'/', parameters('adPDCVMName'),'-datadisk.vhd')]"
+              "uri":"[concat('http://',parameters('newStorageAccountNamePrefix'),'0.blob.core.windows.net/',parameters('vmContainerName'),'/', parameters('adPDCVMName'),'-datadisk.vhd')]"
               },
             "name":"[concat(parameters('adPDCVMName'),'-datadisk')]",
             "createOption": "empty",
