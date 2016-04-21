@@ -162,7 +162,7 @@
             "clusterName": "[parameters('clusterName')]",
             "sharePath": "[toLower(concat(variables('sharePathPrefix'), parameters('sharePath')))]",
             "nodeNamePrefix": "[variables('siosVMNamePrefix')]",
-			"nodeCount": "[parameters('computeNodeCount')]"
+			"nodeCount": "[variables('computeNodeCount')]"
           }
         },
         "protectedSettings": {
@@ -177,10 +177,6 @@
       "type": "Microsoft.Compute/virtualMachines",
       "name": "[concat(variables('siosVMNamePrefix'), add(copyIndex(),1))]",
       "location": "[parameters('location')]",
-	  "copy": {
-        "name": "siosVirtualMachineLoop",
-        "count": "[parameters('computeNodeCount')]"
-      },
       "plan": {
         "name": "bring_your_own_license_dkce_and_sql",
         "publisher": "sios_datakeeper",
