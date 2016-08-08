@@ -71,9 +71,9 @@
       "name": "[concat(variables('siosVMNamePrefix'), '0')]",
       "location": "[parameters('location')]",
       "plan": {
-        "name": "bring_your_own_license",
+        "name": "bring_your_own_license_dkce_and_sql",
         "publisher": "sios_datakeeper",
-        "product": "sios-datakeeper-8"
+        "product": "bring_your_own_license_dkce_and_sql"
       },
       "properties": {
         "hardwareProfile": {
@@ -90,8 +90,8 @@
         "storageProfile": {
           "imageReference": {
             "publisher": "sios_datakeeper",
-            "offer": "sios-datakeeper-8",
-            "sku": "bring_your_own_license",
+            "offer": "bring_your_own_license_dkce_and_sql",
+            "sku": "bring_your_own_license_dkce_and_sql",
             "version": "latest"
           },
           "osDisk": {
@@ -171,9 +171,9 @@
       "name": "[concat(variables('siosVMNamePrefix'), '1')]",
       "location": "[parameters('location')]",
       "plan": {
-        "name": "bring_your_own_license",
+        "name": "bring_your_own_license_dkce_and_sql",
         "publisher": "sios_datakeeper",
-        "product": "sios-datakeeper-8"
+        "product": "bring_your_own_license_dkce_and_sql"
       },
       "properties": {
         "hardwareProfile": {
@@ -190,8 +190,8 @@
         "storageProfile": {
           "imageReference": {
             "publisher": "sios_datakeeper",
-            "offer": "sios-datakeeper-8",
-            "sku": "bring_your_own_license",
+            "offer": "bring_your_own_license_dkce_and_sql",
+            "sku": "bring_your_own_license_dkce_and_sql",
             "version": "latest"
           },
           "osDisk": {
@@ -268,9 +268,9 @@
       "name": "[concat(variables('siosVMNamePrefix'), 'client')]",
       "location": "[parameters('location')]",
       "plan": {
-        "name": "sios-datakeeper-8",
+        "name": "bring_your_own_license_dkce_and_sql",
         "publisher": "sios_datakeeper",
-        "product": "bring_your_own_license"
+        "product": "bring_your_own_license_dkce_and_sql"
       },
       "properties": {
         "hardwareProfile": {
@@ -287,8 +287,8 @@
         "storageProfile": {
           "imageReference": {
             "publisher": "sios_datakeeper",
-            "offer": "sios-datakeeper-8",
-            "sku": "bring_your_own_license",
+            "offer": "bring_your_own_license_dkce_and_sql",
+            "sku": "bring_your_own_license_dkce_and_sql",
             "version": "latest"
           },
           "osDisk": {
