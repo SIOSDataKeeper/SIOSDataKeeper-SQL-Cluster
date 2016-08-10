@@ -268,9 +268,9 @@
       "name": "[concat(variables('siosVMNamePrefix'), 'client')]",
       "location": "[parameters('location')]",
       "plan": {
-        "name": "sios-datakeeper-8",
+        "name": "bring_your_own_license",
         "publisher": "sios_datakeeper",
-        "product": "bring_your_own_license"
+        "product": "sios-datakeeper-8"
       },
       "properties": {
         "hardwareProfile": {
