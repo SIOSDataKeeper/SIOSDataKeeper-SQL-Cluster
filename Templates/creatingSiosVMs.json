@@ -17,13 +17,7 @@
     "clientAvailabilitySet": {
       "type": "string"
     },
-	"computeNodeCount": {
-		"type": "int"
-	},
     "siosVMSize": {
-      "type": "string"
-    },
-	"clientVMSize": {
       "type": "string"
     },
     "domainName": {
@@ -77,9 +71,9 @@
       "name": "[concat(variables('siosVMNamePrefix'), '0')]",
       "location": "[parameters('location')]",
       "plan": {
-        "name": "bring_your_own_license_dkce_and_sql",
+        "name": "bring_your_own_license",
         "publisher": "sios_datakeeper",
-        "product": "bring_your_own_license_dkce_and_sql"
+        "product": "sios-datakeeper-8"
       },
       "properties": {
         "hardwareProfile": {
@@ -96,14 +90,14 @@
         "storageProfile": {
           "imageReference": {
             "publisher": "sios_datakeeper",
-            "offer": "bring_your_own_license_dkce_and_sql",
-            "sku": "bring_your_own_license_dkce_and_sql",
+            "offer": "sios-datakeeper-8",
+            "sku": "bring_your_own_license",
             "version": "latest"
           },
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'sios.blob.core.windows.net/',parameters('vmContainerName'),'/',variables('siosVMNamePrefix'), '0', '-osdisk.vhd')]"
+              "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'1.blob.core.windows.net/',parameters('vmContainerName'),'/',variables('siosVMNamePrefix'), '0', '-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -111,7 +105,7 @@
           "dataDisks": [
             {
               "vhd": {
-                "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'sios.blob.core.windows.net/',parameters('vmContainerName'),'/', variables('siosVMNamePrefix'), '0', '-datadisk.vhd')]"
+                "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'1.blob.core.windows.net/',parameters('vmContainerName'),'/', variables('siosVMNamePrefix'), '0', '-datadisk.vhd')]"
               },
               "name": "[concat(variables('siosVMNamePrefix'), '0','-datadisk')]",
               "caching": "None",
@@ -161,8 +155,7 @@
             "licenseKeyFtpURL": "[parameters('licenseKeyFtpURL')]",
             "clusterName": "[parameters('clusterName')]",
             "sharePath": "[toLower(concat(variables('sharePathPrefix'), parameters('sharePath')))]",
-            "nodeNamePrefix": "[variables('siosVMNamePrefix')]",
-			"nodeCount": "[parameters('computeNodeCount')]"
+            "nodes": [ "[concat(variables('siosVMNamePrefix'),'0')]", "[concat(variables('siosVMNamePrefix'),'1')]" ]
           }
         },
         "protectedSettings": {
@@ -175,16 +168,12 @@
     {
       "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines",
-      "name": "[concat(variables('siosVMNamePrefix'), add(copyIndex(),1))]",
+      "name": "[concat(variables('siosVMNamePrefix'), '1')]",
       "location": "[parameters('location')]",
-	  "copy": {
-        "name": "siosVirtualMachineLoop",
-        "count": "[parameters('computeNodeCount')]"
-      },
       "plan": {
-        "name": "bring_your_own_license_dkce_and_sql",
+        "name": "bring_your_own_license",
         "publisher": "sios_datakeeper",
-        "product": "bring_your_own_license_dkce_and_sql"
+        "product": "sios-datakeeper-8"
       },
       "properties": {
         "hardwareProfile": {
@@ -194,21 +183,21 @@
           "id": "[parameters('siosAvailabilitySet')]"
         },
         "osProfile": {
-          "computerName": "[concat(variables('siosVMNamePrefix'), add(copyIndex(),1))]",
+          "computerName": "[concat(variables('siosVMNamePrefix'), '1')]",
           "adminUsername": "[parameters('adminUsername')]",
           "adminPassword": "[parameters('adminPassword')]"
         },
         "storageProfile": {
           "imageReference": {
             "publisher": "sios_datakeeper",
-            "offer": "bring_your_own_license_dkce_and_sql",
-            "sku": "bring_your_own_license_dkce_and_sql",
+            "offer": "sios-datakeeper-8",
+            "sku": "bring_your_own_license",
             "version": "latest"
           },
           "osDisk": {
             "name": "osdisk",
             "vhd": {
-              "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'sios.blob.core.windows.net/',parameters('vmContainerName'),'/',variables('siosVMNamePrefix'), add(copyIndex(),1), '-osdisk.vhd')]"
+              "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'1.blob.core.windows.net/',parameters('vmContainerName'),'/',variables('siosVMNamePrefix'), '1', '-osdisk.vhd')]"
             },
             "caching": "ReadWrite",
             "createOption": "FromImage"
@@ -216,9 +205,9 @@
           "dataDisks": [
             {
               "vhd": {
-                "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'sios.blob.core.windows.net/',parameters('vmContainerName'),'/', variables('siosVMNamePrefix'), add(copyIndex(),1), '-datadisk.vhd')]"
+                "uri": "[concat('http://',parameters('newStorageAccountNamePrefix'),'1.blob.core.windows.net/',parameters('vmContainerName'),'/', variables('siosVMNamePrefix'), '1', '-datadisk.vhd')]"
               },
-              "name": "[concat(variables('siosVMNamePrefix'), add(copyIndex(),1),'-datadisk')]",
+              "name": "[concat(variables('siosVMNamePrefix'), '1','-datadisk')]",
               "caching": "None",
               "createOption": "empty",
               "diskSizeGB": 100,
@@ -229,7 +218,7 @@
         "networkProfile": {
           "networkInterfaces": [
             {
-              "id": "[resourceId(resourceGroup().name,'Microsoft.Network/networkInterfaces',concat(variables('siosVMNamePrefix'), add(copyIndex(),1),'-nic'))]"
+              "id": "[resourceId(resourceGroup().name,'Microsoft.Network/networkInterfaces',concat(variables('siosVMNamePrefix'), '1','-nic'))]"
             }
           ]
         },
@@ -243,15 +232,11 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines/extensions",
-      "name": "[concat(variables('siosVMNamePrefix'), add(copyIndex(),1), '/configureSiosVM')]",
+      "name": "[concat(variables('siosVMNamePrefix'), '1', '/configureSiosVM')]",
       "apiVersion": "2015-06-15",
       "location": "[parameters('location')]",
-	  "copy": {
-        "name": "siosVirtualMachineLoop",
-        "count": "[parameters('computeNodeCount')]"
-      },
       "dependsOn": [
-        "[concat('Microsoft.Compute/virtualMachines/', variables('siosVMNamePrefix'), add(copyIndex(),1))]"
+        "[concat('Microsoft.Compute/virtualMachines/', variables('siosVMNamePrefix'), '1')]"
       ],
       "properties": {
         "publisher": "Microsoft.Powershell",
@@ -283,13 +268,13 @@
       "name": "[concat(variables('siosVMNamePrefix'), 'client')]",
       "location": "[parameters('location')]",
       "plan": {
-        "name": "bring_your_own_license_dkce_and_sql",
+        "name": "sios-datakeeper-8",
         "publisher": "sios_datakeeper",
-        "product": "bring_your_own_license_dkce_and_sql"
+        "product": "bring_your_own_license"
       },
       "properties": {
         "hardwareProfile": {
-          "vmSize": "[parameters('clientVMSize')]"
+          "vmSize": "[parameters('siosVMSize')]"
         },
         "availabilitySet": {
           "id": "[parameters('clientAvailabilitySet')]"
@@ -302,8 +287,8 @@
         "storageProfile": {
           "imageReference": {
             "publisher": "sios_datakeeper",
-            "offer": "bring_your_own_license_dkce_and_sql",
-            "sku": "bring_your_own_license_dkce_and_sql",
+            "offer": "sios-datakeeper-8",
+            "sku": "bring_your_own_license",
             "version": "latest"
           },
           "osDisk": {
