@@ -252,7 +252,7 @@
               "password": "PrivateSettingsRef:adminPassword"
             },
             "licenseKeyFtpURL": "[parameters('licenseKeyFtpURL')]",
-            "clusterName": "[variables('clusterName')]",
+            "clusterName": "[parameters('clusterName')]",
             "nodes": [ "[concat(variables('siosVMNamePrefix'),'0')]", "[concat(variables('siosVMNamePrefix'),'1')]" ]
           }
         },
