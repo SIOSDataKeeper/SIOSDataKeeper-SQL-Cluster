@@ -154,8 +154,7 @@
             },
             "licenseKeyFtpURL": "[parameters('licenseKeyFtpURL')]",
             "clusterName": "[parameters('clusterName')]",
-            "sharePath": "[toLower(concat(variables('sharePathPrefix'), parameters('sharePath')))]",
-            "nodes": [ "[concat(variables('siosVMNamePrefix'),'0')]", "[concat(variables('siosVMNamePrefix'),'1')]" ]
+            "sharePath": "[toLower(concat(variables('sharePathPrefix'), parameters('sharePath')))]"
           }
         },
         "protectedSettings": {
@@ -252,7 +251,9 @@
               "userName": "[parameters('adminUserName')]",
               "password": "PrivateSettingsRef:adminPassword"
             },
-            "licenseKeyFtpURL": "[parameters('licenseKeyFtpURL')]"
+            "licenseKeyFtpURL": "[parameters('licenseKeyFtpURL')]",
+            "clusterName": "[variables('clusterName')]",
+            "nodes": [ "[concat(variables('siosVMNamePrefix'),'0')]", "[concat(variables('siosVMNamePrefix'),'1')]" ]
           }
         },
         "protectedSettings": {
