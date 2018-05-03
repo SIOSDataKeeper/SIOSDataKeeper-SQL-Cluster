@@ -1,4 +1,4 @@
-# SQL Server 2014 AlwaysOn Failover Cluster Instance with SIOS DataKeeper<br/>Azure Deployment Template
+# SQL Server 2014 Failover Cluster Instance with SIOS DataKeeper<br/>Azure Deployment Template
 
 This template will create a high availability/disaster recovery (HA/DR) solution with the following features:
 +	A Virtual Network
