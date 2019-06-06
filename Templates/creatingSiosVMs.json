@@ -71,9 +71,9 @@
       "name": "[concat(variables('siosVMNamePrefix'), '0')]",
       "location": "[parameters('location')]",
       "plan": {
-        "name": "bring_your_own_license",
-        "publisher": "sios_datakeeper",
-        "product": "sios-datakeeper-8"
+        "name": "2.127.20190521",
+        "publisher": "MicrosoftWindowsServer",
+        "product": "WindowsServer"
       },
       "properties": {
         "hardwareProfile": {
@@ -89,9 +89,9 @@
         },
         "storageProfile": {
           "imageReference": {
-            "publisher": "sios_datakeeper",
-            "offer": "sios-datakeeper-8",
-            "sku": "bring_your_own_license",
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2008-R2-SP1",
             "version": "latest"
           },
           "osDisk": {
@@ -171,9 +171,9 @@
       "name": "[concat(variables('siosVMNamePrefix'), '1')]",
       "location": "[parameters('location')]",
       "plan": {
-        "name": "bring_your_own_license",
-        "publisher": "sios_datakeeper",
-        "product": "sios-datakeeper-8"
+        "name": "2.127.20190521",
+        "publisher": "MicrosoftWindowsServer",
+        "product": "WindowsServer"
       },
       "properties": {
         "hardwareProfile": {
@@ -189,9 +189,9 @@
         },
         "storageProfile": {
           "imageReference": {
-            "publisher": "sios_datakeeper",
-            "offer": "sios-datakeeper-8",
-            "sku": "bring_your_own_license",
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2008-R2-SP1",
             "version": "latest"
           },
           "osDisk": {
